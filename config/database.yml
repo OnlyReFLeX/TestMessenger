@@ -10,9 +10,3 @@ development:
 test:
   <<: *default
   database: TestMessenger_test
-
-production:
-  <<: *default
-  database: TestMessenger_production
-  username: TestMessenger
-  password: <%= ENV['TESTMESSENGER_DATABASE_PASSWORD'] %>
