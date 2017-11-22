@@ -6,7 +6,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
   </head>
 
   <body>
@@ -44,9 +43,8 @@
             <%= link_to(' Сменить пароль', edit_user_registration_path, class: 'mdl-navigation__link') %>
             <%= link_to('Выход ', destroy_user_session_path, :method => :delete, class: 'mdl-navigation__link') %>
           </nav>
+        </div>
       <% end %>
-      </div>
-
       <main class="mdl-layout__content">
         <div class="page-content">
          <p class="notice"><%= notice %></p>
