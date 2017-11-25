@@ -1,7 +1,5 @@
 class MessagesController < ApplicationController
-  before_action do
-    @conversation = Conversation.find(params[:conversation_id])
-  end
+  before_action :find_conversation
 
   def index
     if current_user.id == @conversation.sender_id || current_user.id == @conversation.recipient_id
@@ -39,6 +37,9 @@ class MessagesController < ApplicationController
   end
 
 private
+  def find_conversation
+    @conversation = Conversation.find(params[:conversation_id])
+  end
   def message_params
     params.require(:message).permit(:body)
   end
