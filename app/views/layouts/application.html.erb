@@ -24,7 +24,16 @@
             <a class="mdl-navigation__link" href="">Link</a>
             <a class="mdl-navigation__link" href="">Link</a>
           <% if user_signed_in? %>
-                  <b> <%= current_user.username %></b>
+            <b> <%= current_user.username %> ID : <%= current_user.id %></b>
+            <button id="demo-menu-lower-right"
+                    class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                for="demo-menu-lower-right">
+              <li class="mdl-menu__item"><%= link_to(' Сменить пароль', edit_user_registration_path) %></li>
+              <li class="mdl-menu__item"><%= link_to('Выход ', destroy_user_session_path, :method => :delete) %></li>
+            </ul>
           <% else %>
                   <%= link_to('Войти', new_user_session_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  ) %>
           <% end %>
@@ -37,11 +46,9 @@
           <span class="mdl-layout-title"><%= current_user.username %></span>
 
           <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <%= link_to(' Сменить пароль', edit_user_registration_path, class: 'mdl-navigation__link') %>
-            <%= link_to('Выход ', destroy_user_session_path, :method => :delete, class: 'mdl-navigation__link') %>
+            <%= link_to 'Сообщения', conversations_path , class: "mdl-navigation__link" %>
+
+
           </nav>
         </div>
       <% end %>
@@ -52,7 +59,15 @@
          <%= yield %>
         </div>
       </main>
-
+      <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+          <div class="mdl-logo">OnlyReFLeX</div>
+          <ul class="mdl-mini-footer__link-list">
+            <li><a href="https://www.GitHub.com/OnlyReFLeX">GitHub</a></li>
+            <li><a href="#">Company 2017</a></li>
+          </ul>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

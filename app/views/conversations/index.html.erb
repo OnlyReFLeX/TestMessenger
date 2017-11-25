@@ -1,0 +1,35 @@
+<div>
+  <h3>Чаты</h3>
+
+  <div>
+    <div>
+      <% @conversations.each do |conversation| %>
+        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+          <%= link_to recipient.username, conversation_messages_path(conversation)%>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div>
+  <h3>Все пользователи</h3>
+  <div>
+    <% @users.each do |user| %>
+      <% if user.id != current_user.id %>
+      <div>
+        <span class="mdl-chip">
+            <%= link_to user.username, conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "mdl-chip__text" %>
+        </span>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
